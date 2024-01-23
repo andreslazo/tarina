@@ -1,6 +1,6 @@
 import StoryThumbnail from "@/components/stories/StoryThumbnail"
+import LabelsList from "@/components/stories/LabelsList";
 import { mockData } from "@/data/stories";
-import LabelsList from "./LabelsList";
 
 export default function StoryList({ storyList, label }) {
   const allLabels = mockData.map(story => story.labels).flat();

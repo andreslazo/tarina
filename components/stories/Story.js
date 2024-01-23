@@ -1,6 +1,6 @@
 import Image from "next/image";
 import Button from "@/components/shared/Button";
-import { Title } from "../shared/Title";
+import { Title } from "@/components/shared/Title";
 
 export default function Story({story}) {
   return (

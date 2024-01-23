@@ -1,8 +1,8 @@
 "use client"
 
-import NavBarSubMenu from "@/components/layout/NavBarSubMenu"
 import { usePathname } from "next/navigation"
 import Link from "next/link"
+import NavBarSubMenu from "@/components/layout/NavBarSubMenu"
 
 export default function NavBar() {
   const contactSubMenuElements = [

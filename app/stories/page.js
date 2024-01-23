@@ -1,6 +1,6 @@
 import StoryList from "@/components/stories/StoryList";
-import { mockData } from "@/data/stories";
 import { Title } from "@/components/shared/Title";
+import { mockData } from "@/data/stories";
 
 export const metadata = {
   title: 'Stories - Tarina',
