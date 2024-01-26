@@ -6,8 +6,8 @@ export default function Story({story}) {
   return (
     <>
       <Title>{story.name}</Title>
-      <div className="border p-4 flex flex-wrap">
-        <div className="w-1/4 border">
+      <div className="p-4 flex flex-wrap rounded">
+        <div className="w-1/4 bg-slate-500">
           <div className="relative h-48">
             <Image
               src={story.thumbnail}
@@ -37,7 +37,7 @@ export default function Story({story}) {
             Comments:
           </p>
         </div>
-        <div className="w-3/4 border">
+        <div className="w-3/4 bg-slate-400">
           <p>Aqui va la historia escrita</p>
         </div>
       </div>

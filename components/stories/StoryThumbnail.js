@@ -5,7 +5,7 @@ export default function StoryThumbnail({story}) {
   return (
 
     <Link href={`/story/${story.id}`}>
-      <div className="border p-4">
+      <div className="p-4 bg-slate-600 hover:bg-slate-500 rounded">
         <div className="relative h-48">
           <Image
             src={story.thumbnail}
