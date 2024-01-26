@@ -1,6 +1,5 @@
 import StoryThumbnail from "@/components/stories/StoryThumbnail"
 import LabelsList from "@/components/stories/LabelsList"
-import { Title } from "@/components/shared/Title"
 import { mockData } from "@/data/stories"
 
 export default function StoryList({ storyList, label }) {
@@ -11,9 +10,6 @@ export default function StoryList({ storyList, label }) {
 
   return (
     <>
-      <Title>
-        Stories
-      </Title>
       <LabelsList allLabels={allLabels} />
       <div className="grid grid-cols-3 gap-4 p-3">
         {stories.map((story, index) => (

@@ -13,7 +13,9 @@ export default function Labels({params}) {
 
   return (
     <>
-      <Title text={`Stories - ${label}`} />
+      <Title>
+        {`Stories with label: ${label}`}
+      </Title>
       <StoryList storyList={mockData} label={label} />
     </>
   )

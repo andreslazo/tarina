@@ -11,6 +11,9 @@ export const metadata = {
 export default function Stories() {
   return (
     <>
+      <Title>
+        All Stories
+      </Title>
       <StoryList storyList={mockData} label='ALL' />
     </>
   )
