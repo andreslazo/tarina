@@ -12,7 +12,6 @@ export default function NavBar() {
   ]
 
   const menuElements = [
-    {name: 'Home', href: '/'},
     {name: 'Stories', href: '/stories'},
     {name: 'Search', href: '/search'},
   ]
@@ -21,13 +20,25 @@ export default function NavBar() {
 
   return (
     <nav className="flex items-center gap-x-4 p-2">
+      <Link
+        href="/story/new"
+        // eslint-disable-next-line max-len
+        className="text-base text-slate-500 hover:text-slate-700 p-3 bg-slate-950 rounded"
+      >
+        New story
+      </Link>
       {
         menuElements.map(element => {
+          const isActive = (
+            pathname.includes(element.href) && element.href != '/'
+          ) || (pathname === '/' && pathname === element.href)
+
           return (
             <Link
               key={element.name}
               href={element.href}
-              className={`${((pathname.includes(element.href) && element.href != '/') || (pathname === '/' && pathname === element.href)) && 'font-bold'} text-base text-slate-500 hover:text-slate-700 p-3`}
+              className={`${isActive && 'font-bold'}
+                text-base text-slate-500 hover:text-slate-700 p-3`}
             >
               {element.name}
             </Link>

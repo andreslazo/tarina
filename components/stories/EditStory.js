@@ -1,44 +1,38 @@
-import Image from "next/image"
 import Button from "@/components/shared/Button"
 import { Title } from "@/components/shared/Title"
 
-export default function Story({story}) {
+export default function EditStory() {
   return (
     <>
-      <Title>{story.name}</Title>
+      <Title>New Story</Title>
       <div className="border p-4 flex flex-wrap">
         <div className="w-1/4 border">
           <div className="relative h-48">
-            <Image
-              src={story.thumbnail}
-              alt="story-thumbnail"
-              width={190}
-              height={50}
-            />
+            <Button className="absolute top-0 right-0">Browse</Button>
           </div>
           <p>
-            Labels: {story.labels.join(', ')}
+            Labels:
           </p>
           <Button>Dislike</Button>
           <p>
-            Likes: {story.likes}
+            Likes:
           </p>
           <Button>Like</Button>
           <p>
-            Views: {story.views}
+            Views:
           </p>
           <p>
-            Written by: {story.userId}
+            Written by:
           </p>
           <p>
-            Created at: {story.createdAt}
+            Created at:
           </p>
           <p>
             Comments:
           </p>
         </div>
         <div className="w-3/4 border">
-          <p>Aqui va la historia escrita</p>
+          <p>Aqui va un input para escribir la historia</p>
         </div>
       </div>
     </>

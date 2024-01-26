@@ -10,7 +10,7 @@ export async function generateMetadata({params, searchParams}, parent) {
   }
 }
 
-export default function DocumentPage({params}) {
+export default function StoryPage({params}) {
   const { id } = params
   const story = mockData.find(doc => doc.id == id)
 

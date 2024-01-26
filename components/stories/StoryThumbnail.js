@@ -7,7 +7,12 @@ export default function StoryThumbnail({story}) {
     <Link href={`/story/${story.id}`}>
       <div className="border p-4">
         <div className="relative h-48">
-          <Image src={story.thumbnail} alt="story-thumbnail" width={190} height={50} />
+          <Image
+            src={story.thumbnail}
+            alt="story-thumbnail"
+            width={190}
+            height={50}
+          />
         </div>
         <div className="text-xl font-bold">
           {story.name}
