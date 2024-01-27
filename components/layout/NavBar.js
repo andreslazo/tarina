@@ -1,8 +1,9 @@
 "use client"
 
 import { usePathname } from "next/navigation"
-import Link from "next/link"
 import NavBarSubMenu from "@/components/layout/NavBarSubMenu"
+import Link from "next/link"
+import Image from "next/image"
 
 export default function NavBar() {
   const contactSubMenuElements = [
@@ -21,31 +22,49 @@ export default function NavBar() {
   return (
     <nav className="flex items-center gap-x-4 p-2">
       <Link
-        href="/story/new"
+        href="/stories/new"
         // eslint-disable-next-line max-len
         className="text-base text-slate-500 hover:text-slate-700 p-3 bg-slate-950 rounded"
       >
         New story
       </Link>
-      {
-        menuElements.map(element => {
-          const isActive = (
-            pathname.includes(element.href) && element.href != '/'
-          ) || (pathname === '/' && pathname === element.href)
+      <ul className="md:flex hidden items-center">
+        {
+          menuElements.map(element => {
+            const isActive = (
+              pathname.includes(element.href) && element.href != '/'
+            ) || (pathname === '/' && pathname === element.href)
 
-          return (
-            <Link
-              key={element.name}
-              href={element.href}
-              className={`${isActive && 'font-bold'}
-                text-base text-slate-500 hover:text-slate-700 p-3`}
-            >
-              {element.name}
-            </Link>
-          )
-        })
-      }
-      <NavBarSubMenu name="Contact" elements={contactSubMenuElements} />
+            return (
+              <Link
+                key={element.name}
+                href={element.href}
+                className={`${isActive && 'font-bold'}
+                  text-base text-slate-500 hover:text-slate-700 p-3`}
+              >
+                {element.name}
+              </Link>
+            )
+          })
+        }
+
+        <NavBarSubMenu elements={contactSubMenuElements}>
+          Contact
+        </NavBarSubMenu>
+      </ul>
+
+      <NavBarSubMenu
+        elements={menuElements}
+        divClassname="md:hidden inline-block"
+      >
+        <Image
+        src="/menu.svg"
+        alt="Menu"
+        width={32}
+        height={32}
+        className="md:hidden inline-block"
+        />
+      </NavBarSubMenu>
     </nav>
   )
 }
