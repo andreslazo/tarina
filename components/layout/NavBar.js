@@ -54,12 +54,11 @@ export default function NavBar() {
       </ul>
 
       <NavBarSubMenu
-        name="Menu"
         elements={menuElements}
-        className="md:hidden inline-block"
+        divClassname="md:hidden inline-block"
       >
         <Image
-        src="menu.svg"
+        src="/menu.svg"
         alt="Menu"
         width={32}
         height={32}

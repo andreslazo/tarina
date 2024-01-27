@@ -1,7 +1,7 @@
 import { useState, useEffect, useRef } from 'react'
 import Link from 'next/link'
 
-export default function NavBarSubMenu({elements, children}) {
+export default function NavBarSubMenu({elements, divClassname = '', children}) {
   const [showSubMenu, setShowSubMenu] = useState(false)
   const submenuRef = useRef()
 
@@ -24,12 +24,12 @@ export default function NavBarSubMenu({elements, children}) {
   }, [])
 
   return (
-    <div className="relative group z-[999]">
+    <div className={`relative group z-[999] ${divClassname}`}>
       <Link
         href="#"
         className={
           "text-base text-slate-500 hover:text-slate-700 p-3 "
-          + (showSubMenu ? "active" : "")
+          + (showSubMenu && "active")
         }
         onClick={toggleSubMenu}
       >
