@@ -22,7 +22,7 @@ export default function NavBar() {
   return (
     <nav className="flex items-center gap-x-4 p-2">
       <Link
-        href="/story/new"
+        href="/stories/new"
         // eslint-disable-next-line max-len
         className="text-base text-slate-500 hover:text-slate-700 p-3 bg-slate-950 rounded"
       >
