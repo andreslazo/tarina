@@ -15,6 +15,7 @@ At the moment I work on:
 - Server-side components
 - Use of Tailwind
 - Improving the styling
+- First steps towards a fully responsive app and design
 
 ## Getting Started
 
