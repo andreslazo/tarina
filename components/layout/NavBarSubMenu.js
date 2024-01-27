@@ -1,7 +1,7 @@
 import { useState, useEffect, useRef } from 'react'
 import Link from 'next/link'
 
-export default function NavBarSubMenu(props) {
+export default function NavBarSubMenu({elements, children}) {
   const [showSubMenu, setShowSubMenu] = useState(false)
   const submenuRef = useRef()
 
@@ -33,7 +33,7 @@ export default function NavBarSubMenu(props) {
         }
         onClick={toggleSubMenu}
       >
-        {props.name}
+        {children}
       </Link>
       {showSubMenu && (
         <div
@@ -41,7 +41,7 @@ export default function NavBarSubMenu(props) {
           // eslint-disable-next-line max-len
           className="absolute left-0 mt-2 w-36 shadow-lg dark:bg-slate-600 bg-white ring-1 ring-black ring-opacity-5 transform translate-x-[-50%] right-0 rounded-sm"
         >
-          {props.elements.map((link, index) => (
+          {elements.map((link, index) => (
             <Link
               key={index}
               href={link.href}
