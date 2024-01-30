@@ -1,4 +1,5 @@
 import EditStory from "@/components/stories/EditStory"
+import { Title } from "@/components/shared/Title"
 
 export const metadata = {
   title: "New story - Tarina"
@@ -6,6 +7,9 @@ export const metadata = {
 
 export default function NewStoryPage() {
   return (
-    <EditStory />
+    <>
+      <Title>New Story</Title>
+      <EditStory />
+    </>
   )
 }

@@ -1,6 +1,5 @@
 import StoryList from "@/components/stories/StoryList"
 import { Title } from "@/components/shared/Title"
-import { mockData } from "@/data/stories"
 
 export async function generateMetadata({params, searchParams}, parent) {
   return {
@@ -16,7 +15,7 @@ export default function Labels({params}) {
       <Title>
         {`Stories with label: ${label}`}
       </Title>
-      <StoryList storyList={mockData} label={label} />
+      <StoryList label={label} />
     </>
   )
 }

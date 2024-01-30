@@ -1,18 +1,25 @@
 import Story from "@/components/stories/Story"
-import { mockData } from "@/data/stories"
 
 export async function generateMetadata({params, searchParams}, parent) {
   const { id } = params
-  const story = mockData.find(doc => doc.id == id)
+
+  const story = await fetch(
+    `http://localhost:3000/api/story/${id}`,
+    {cache: "no-store"}
+  ).then(res => res.json())
 
   return {
     title: `Story - ${story.name}`
   }
 }
 
-export default function StoryPage({params}) {
+export default async function StoryPage({params}) {
   const { id } = params
-  const story = mockData.find(doc => doc.id == id)
+
+  const story = await fetch(
+    `http://localhost:3000/api/story/${id}`,
+    {cache: "no-store"}
+  ).then(res => res.json())
 
   if (story == undefined) {
     return (

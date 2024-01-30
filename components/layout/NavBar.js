@@ -7,14 +7,14 @@ import Image from "next/image"
 
 export default function NavBar() {
   const contactSubMenuElements = [
-    {name: 'Phone', href: 'tel:+1-555-555-5555'},
-    {name: 'Telegram Group', href: 'https://t.me/1XXXXXXXXXX'},
-    {name: 'Email', href: 'mailto:false@example.com'}
+    {name: "Phone", href: "tel:+1-555-555-5555"},
+    {name: "Telegram Group", href: "https://t.me/1XXXXXXXXXX"},
+    {name: "Email", href: "mailto:false@example.com"}
   ]
 
   const menuElements = [
-    {name: 'Stories', href: '/stories'},
-    {name: 'Search', href: '/search'},
+    {name: "Stories", href: "/stories"},
+    {name: "Search", href: "/search"},
   ]
 
   const pathname = usePathname()
@@ -32,14 +32,14 @@ export default function NavBar() {
         {
           menuElements.map(element => {
             const isActive = (
-              pathname.includes(element.href) && element.href != '/'
-            ) || (pathname === '/' && pathname === element.href)
+              pathname.includes(element.href) && element.href != "/"
+            ) || (pathname === "/" && pathname === element.href)
 
             return (
               <Link
                 key={element.name}
                 href={element.href}
-                className={`${isActive && 'font-bold'}
+                className={`${isActive && "font-bold"}
                   text-base text-slate-500 hover:text-slate-700 p-3`}
               >
                 {element.name}

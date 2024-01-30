@@ -17,7 +17,7 @@ export default function Story({story}) {
             />
           </div>
           <p>
-            Labels: {story.labels.join(', ')}
+            Labels: {story.labels.join(", ")}
           </p>
           <Button>Dislike</Button>
           <p>

@@ -1,12 +1,20 @@
 import StoryThumbnail from "@/components/stories/StoryThumbnail"
 import LabelsList from "@/components/stories/LabelsList"
-import { mockData } from "@/data/stories"
 
-export default function StoryList({ storyList, label }) {
-  const allLabels = mockData.map(story => story.labels).flat()
-  const stories = label === 'ALL'
-    ? storyList
-    : storyList.filter(story => story.labels.includes(label))
+export default async function StoryList({ label }) {
+  const stories = await fetch(
+    `http://localhost:3000/api/stories/${label}`, {
+      cache: "no-store",
+      next: {
+        tags: ["stories"]
+      }
+    },
+  ).then(res => res.json())
+
+  const allLabels = await fetch(
+    "http://localhost:3000/api/labels",
+    {cache: "no-store"}
+  ).then(res => res.json())
 
   return (
     <>

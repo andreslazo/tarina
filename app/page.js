@@ -2,9 +2,9 @@ import { Counter } from "@/components/others/Counter"
 import { Title } from "@/components/shared/Title"
 
 export const metadata = {
-  title: 'Tarina',
-  description: 'Story analysis and prediction',
-  keywords: ['NextJS', 'Analytics', 'Prediction', 'Tarina']
+  title: "Tarina",
+  description: "Story analysis and prediction",
+  keywords: ["NextJS", "Analytics", "Prediction", "Tarina"]
 }
 
 export default function Home() {

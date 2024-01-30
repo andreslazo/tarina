@@ -1,7 +1,7 @@
-import { useState, useEffect, useRef } from 'react'
-import Link from 'next/link'
+import { useState, useEffect, useRef } from "react"
+import Link from "next/link"
 
-export default function NavBarSubMenu({elements, divClassname = '', children}) {
+export default function NavBarSubMenu({elements, divClassname = "", children}) {
   const [showSubMenu, setShowSubMenu] = useState(false)
   const submenuRef = useRef()
 
@@ -17,9 +17,9 @@ export default function NavBarSubMenu({elements, divClassname = '', children}) {
       }
     }
 
-    document.addEventListener('mousedown', handleClickOutside)
+    document.addEventListener("mousedown", handleClickOutside)
     return () => {
-      document.removeEventListener('mousedown', handleClickOutside)
+      document.removeEventListener("mousedown", handleClickOutside)
     }
   }, [])
 

@@ -3,7 +3,7 @@ import Link from "next/link"
 
 export default function Logo() {
   return (
-    <Link href={'/'}>
+    <Link href={"/"}>
       <div className="flex items-center">
         <Image
           src="/tarina_logo.png"

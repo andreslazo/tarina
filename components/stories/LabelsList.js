@@ -5,7 +5,7 @@ export default function LabelsList({ allLabels }) {
   return (
     <div className="flex space-x-4 items-center p-3">
       <p className="text-sm">Filter by:</p>
-      <Link href={`/stories`} key={'all'} className={buttonClassname}>
+      <Link href={"/stories"} key={"all"} className={buttonClassname}>
         <p className="text-sm">All</p>
       </Link>
       {allLabels.map((label, index) => (

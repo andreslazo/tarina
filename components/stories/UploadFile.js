@@ -11,7 +11,7 @@ export default function UploadFile() {
 
   return(
     <>
-      <input type="file" ref={fileInputRef} style={{ display: 'none' }} />
+      <input type="file" ref={fileInputRef} style={{ display: "none" }} />
       <Button className="absolute top-0 right-0" onClick={handleBrowseClick}>
         Browse
       </Button>
