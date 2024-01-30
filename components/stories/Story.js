@@ -41,7 +41,7 @@ export default function Story({story}) {
           </p>
         </div>
         {/* eslint-disable-next-line max-len */}
-        <div className="w-full md:w-3/4 bg-slate-400 p-3 mt-2 rounded-md shadow-lg">
+        <div className="w-full md:w-3/4 bg-slate-400 p-3 mt-2 lg:mt-0 rounded-md shadow-lg">
           <p>Aqui va la historia escrita</p>
         </div>
       </div>

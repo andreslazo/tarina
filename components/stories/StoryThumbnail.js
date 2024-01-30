@@ -5,7 +5,8 @@ export default function StoryThumbnail({story}) {
   return (
 
     <Link href={`/story/${story.id}`}>
-      <div className="p-4 bg-slate-600 hover:bg-slate-500 rounded">
+      {/* eslint-disable-next-line max-len */}
+      <div className="p-4 bg-slate-600 hover:bg-slate-500 rounded shadow-sm hover:shadow-md">
         <div className="relative h-48">
           <Image
             src={story.thumbnail}

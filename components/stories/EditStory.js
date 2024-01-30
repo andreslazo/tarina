@@ -39,7 +39,7 @@ export default function EditStory() {
           />
         </div>
         {/* eslint-disable max-len */}
-        <div className="w-full md:w-1/4 p-3 flex flex-col bg-slate-400 rounded-sm mt-2">
+        <div className="w-full md:w-1/4 p-3 flex flex-col bg-slate-400 rounded-sm lg:mt-0 mt-2">
           <p className="py-1">
             Title:
           </p>
