@@ -3,7 +3,7 @@ import NavBar from "@/components/layout/NavBar"
 
 export default function Header() {
   return (
-    <header className="w-full bg-gray-800 text-white">
+    <header className="w-full bg-gray-800 text-white shadow-2xl">
       <div className="flex justify-between items-center p-2">
         <Logo />
         <NavBar />
