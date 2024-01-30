@@ -39,7 +39,8 @@ export default function NavBar() {
               <Link
                 key={element.name}
                 href={element.href}
-                className={`${isActive && "font-bold"}
+                // eslint-disable-next-line max-len
+                className={`${isActive && "text-slate-400 font-bold drop-shadow-xl"}
                   text-base text-slate-500 hover:text-slate-700 p-3`}
               >
                 {element.name}

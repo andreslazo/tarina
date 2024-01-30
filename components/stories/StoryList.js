@@ -20,7 +20,7 @@ export default async function StoryList({ label }) {
     <>
       <LabelsList allLabels={allLabels} />
       {/* eslint-disable-next-line max-len */}
-      <div className="grid lg:grid-cols-3 grid-cols-1 gap-4 p-3 shadow-sm hover:shadow-md">
+      <div className="grid lg:grid-cols-3 grid-cols-1 gap-4 p-3 shadow-sm hover:shadow-md pb-16">
         {stories.map((story, index) => (
           <StoryThumbnail key={index} story={story} />
         ))}

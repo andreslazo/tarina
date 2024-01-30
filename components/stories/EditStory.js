@@ -28,8 +28,8 @@ export default function EditStory() {
   }
 
   return (
-    <form onSubmit={handleSubmit}>
-      <div className="p-4 flex flex-wrap">
+    <form onSubmit={handleSubmit} className="pb-8">
+      <div className="p-4 flex flex-wrap ">
         <div className="w-full md:w-3/4 min-h-64 h-64">
           <TextArea
             name="content"

@@ -7,7 +7,8 @@ export default function Story({story}) {
     <div className="items-center justify-start p-2 h-screen">
       <Title>{story.name}</Title>
       <div className="p-4 flex flex-wrap">
-        <div className="w-full md:w-1/4 bg-slate-500 p-3 rounded-md">
+        {/* eslint-disable-next-line max-len */}
+        <div className="w-full md:w-1/4 bg-slate-500 p-3 rounded-md shadow-lg">
           <div className="relative h-48">
             <Image
               src={story.thumbnail}
@@ -39,7 +40,8 @@ export default function Story({story}) {
             Comments:
           </p>
         </div>
-        <div className="w-full md:w-3/4 bg-slate-400 p-3 mt-2 rounded-md">
+        {/* eslint-disable-next-line max-len */}
+        <div className="w-full md:w-3/4 bg-slate-400 p-3 mt-2 rounded-md shadow-lg">
           <p>Aqui va la historia escrita</p>
         </div>
       </div>

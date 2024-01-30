@@ -10,7 +10,7 @@ export const metadata = {
 export default function Home() {
   return (
     <>
-      <main className="flex flex-col items-center justify-start p-2 h-screen">
+      <main className="flex flex-col items-center justify-start p-2">
         <Title>
           Welcome to Tarina
         </Title>
