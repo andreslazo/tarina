@@ -2,11 +2,14 @@
 import { useState } from "react"
 import UploadFile from "@/components/stories/UploadFile"
 import Button from "@/components/shared/Button"
+import TextArea from "@/components/shared/TextArea"
+import Input from "@/components/shared/Input"
 
 export default function EditStory() {
   const [values, setValues] = useState({
     title: "",
-    content: ""
+    content: "",
+    labels: "",
   })
 
   const handleChange = (e) => {
@@ -27,26 +30,24 @@ export default function EditStory() {
   return (
     <form onSubmit={handleSubmit}>
       <div className="p-4 flex flex-wrap">
-        <div className="w-full md:w-3/4 min-h-64 h-64 border">
-          <textarea
+        <div className="w-full md:w-3/4 min-h-64 h-64">
+          <TextArea
             name="content"
             required
             placeholder="Tiempo de escribir tu historia"
             onChange={handleChange}
-            className="bg-slate-300 text-slate-800 h-full w-full"
           />
         </div>
-        <div className="w-full md:w-1/4 border p-3 flex flex-col">
+        {/* eslint-disable max-len */}
+        <div className="w-full md:w-1/4 p-3 flex flex-col bg-slate-400 rounded-sm mt-2">
           <p className="py-1">
             Title:
           </p>
           <div className="py-1">
-            <input
-              type="text"
+            <Input
               name="title"
               required
               placeholder="Ingresa un nombre para tu historia"
-              className="bg-slate-500"
               onChange={handleChange}
             />
           </div>
@@ -58,11 +59,19 @@ export default function EditStory() {
           </div><p className="py-1">
             Labels:
           </p>
+          <div className="py-1">
+            <Input
+              name="labels"
+              required
+              placeholder="Ingresa etiquetas separadas por comas"
+              onChange={handleChange}
+            />
+          </div>
           <div className="grow" />
         </div>
       </div>
 
-      <div className="p-3">
+      <div className="p-3 pb-5">
         <Button type="submit">Save</Button>
       </div>
     </form>

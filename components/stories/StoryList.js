@@ -19,7 +19,7 @@ export default async function StoryList({ label }) {
   return (
     <>
       <LabelsList allLabels={allLabels} />
-      <div className="grid lg:grid-cols-3 grid-cols-1 gap-4 p-3">
+      <div className="grid lg:grid-cols-3 grid-cols-1 gap-4 p-3 shadow-sm hover:shadow-md">
         {stories.map((story, index) => (
           <StoryThumbnail key={index} story={story} />
         ))}

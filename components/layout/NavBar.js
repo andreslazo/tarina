@@ -24,7 +24,7 @@ export default function NavBar() {
       <Link
         href="/stories/new"
         // eslint-disable-next-line max-len
-        className="text-base text-slate-500 hover:text-slate-700 p-3 bg-slate-950 rounded"
+        className="bg-slate-950 hover:bg-slate-900 text-white font-bold py-2 px-4 rounded shadow-lg hover:shadow-xl"
       >
         New story
       </Link>

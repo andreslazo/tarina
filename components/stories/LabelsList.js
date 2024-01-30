@@ -1,7 +1,7 @@
 import Link from "next/link"
 
 export default function LabelsList({ allLabels }) {
-  const buttonClassname = "p-3 bg-slate-950 rounded"
+  const buttonClassname = "p-3 bg-slate-950 rounded shadow-md hover:bg-slate-900 hover:shadow-lg transition duration-300 ease-in-out"
   return (
     <div className="flex space-x-4 items-center p-3">
       <p className="text-sm">Filter by:</p>

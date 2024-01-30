@@ -4,10 +4,10 @@ import { Title } from "@/components/shared/Title"
 
 export default function Story({story}) {
   return (
-    <>
+    <div className="items-center justify-start p-2 h-screen">
       <Title>{story.name}</Title>
-      <div className="p-4 flex flex-wrap rounded">
-        <div className="w-full md:w-1/4 bg-slate-500 p-2">
+      <div className="p-4 flex flex-wrap">
+        <div className="w-full md:w-1/4 bg-slate-500 p-3 rounded-md">
           <div className="relative h-48">
             <Image
               src={story.thumbnail}
@@ -19,11 +19,13 @@ export default function Story({story}) {
           <p>
             Labels: {story.labels.join(", ")}
           </p>
-          <Button>Dislike</Button>
-          <p>
-            Likes: {story.likes}
-          </p>
-          <Button>Like</Button>
+          <div className="flex items-center space-x-4">
+            <Button>Dislike</Button>
+            <p>
+              Likes: {story.likes}
+            </p>
+            <Button>Like</Button>
+          </div>
           <p>
             Views: {story.views}
           </p>
@@ -37,10 +39,10 @@ export default function Story({story}) {
             Comments:
           </p>
         </div>
-        <div className="w-full md:w-3/4 bg-slate-400 p-3">
+        <div className="w-full md:w-3/4 bg-slate-400 p-3 mt-2 rounded-md">
           <p>Aqui va la historia escrita</p>
         </div>
       </div>
-    </>
+    </div>
   )
 }
