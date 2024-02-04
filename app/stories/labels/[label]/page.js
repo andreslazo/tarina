@@ -7,6 +7,15 @@ export async function generateMetadata({params, searchParams}, parent) {
   }
 }
 
+export function generateStaticParams() {
+  return [
+    { label: "all" },
+    { label: "fantasy" }
+  ]
+}
+
+export const revalidate = 3600
+
 export default function Labels({params}) {
   const { label } = params
 

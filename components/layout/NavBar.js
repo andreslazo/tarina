@@ -13,7 +13,7 @@ export default function NavBar() {
   ]
 
   const menuElements = [
-    {name: "Stories", href: "/stories"},
+    {name: "Stories", href: "/stories/labels/all"},
     {name: "Search", href: "/search"},
   ]
 

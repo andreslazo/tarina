@@ -1,9 +1,11 @@
 import { NextResponse } from "next/server"
-import { mockData } from "@/data/stories"
+import { doc, getDoc } from "firebase/firestore"
+import { db } from "@/app/firebase/config"
 
 export async function GET(request, {params}) {
   const { id } = params
-  const story = mockData.find(story => story.id == id)
+  const storyRef = doc(db, "stories", id)
+  const storySnapshot = await getDoc(storyRef)
 
-  return NextResponse.json(story)
+  return NextResponse.json(storySnapshot.data())
 }
