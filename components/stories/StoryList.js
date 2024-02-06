@@ -4,7 +4,7 @@ import { Suspense } from "react"
 
 export default async function StoryList({ label }) {
   const stories = await fetch(
-    `http://localhost:3000/api/stories/${label}`, {
+    `${process.env.NEXT_PUBLIC_URL}/api/stories/${label}`, {
       cache: "no-store",
       next: {
         tags: ["stories"]

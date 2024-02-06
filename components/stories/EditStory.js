@@ -21,7 +21,7 @@ export default function EditStory() {
 
   const handleSubmit = async (e) => {
     e.preventDefault()
-    await fetch("http://localhost:3000/api/story", {
+    await fetch(`${process.env.NEXT_PUBLIC_URL}/api/story`, {
       method: "POST",
       body: JSON.stringify(values)
     })
