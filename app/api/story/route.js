@@ -1,7 +1,7 @@
 import { NextResponse } from "next/server"
-import { db, storage } from "@/app/firebase/config"
-import { collection, addDoc, updateDoc } from "firebase/firestore"
+import { collection, addDoc, getDoc, updateDoc } from "firebase/firestore"
 import { ref, uploadString, getDownloadURL } from "firebase/storage"
+import { db, storage } from "@/app/firebase/config"
 
 export async function POST(request) {
   const formData = await request.json()
@@ -15,6 +15,7 @@ export async function POST(request) {
   const imageURL = await getDownloadURL(imageRef)
 
   await updateDoc(docRef, { thumbnail: imageURL })
+  const createdDoc = await getDoc(storyRef)
 
-  return NextResponse.json("Data received correctly")
+  return NextResponse.json({ id, ...createdDoc.data() })
 }

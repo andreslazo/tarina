@@ -9,13 +9,15 @@ import TextArea from "@/components/shared/TextArea"
 import Input from "@/components/shared/Input"
 import { labels } from "@/data/labels"
 
-export default function EditStory() {
+export default function EditStory({story}) {
   const [values, setValues] = useState({
-    title: "",
-    content: "",
-    labels: "",
-    image: null
+    title: story?.title || "",
+    content: story?.content || "",
+    labels: story?.labels || "",
+    image: story?.image || null
   })
+
+  const router = useRouter()
 
   const handleChange = (e) => {
     setValues({
@@ -45,6 +47,12 @@ export default function EditStory() {
     }
   }
 
+  const handleBack = (e) => {
+    e.preventDefault()
+
+    router.push(`/story/${story.id}`)
+  }
+
   const cleanupValues = (values) => {
     return {
       ...values,
@@ -53,18 +61,27 @@ export default function EditStory() {
     }
   }
 
-  const router = useRouter()
   const handleSubmit = async (e) => {
     e.preventDefault()
-    const cleanValues = cleanupValues(values)
 
-    await fetch(`${process.env.NEXT_PUBLIC_URL}/api/story`, {
-      method: "POST",
-      body: JSON.stringify(cleanValues)
-    })
+    if (story) {
+      await fetch(`${process.env.NEXT_PUBLIC_URL}/api/story/${story.id}`, {
+        method: "PATCH",
+        body: JSON.stringify(values)
+      })
+    } else {
+      const cleanValues = cleanupValues(values)
+      await fetch(`${process.env.NEXT_PUBLIC_URL}/api/story`, {
+        method: "POST",
+        body: JSON.stringify(cleanValues)
+      })
+    }
 
     router.push("/stories/labels/all")
   }
+
+  // eslint-disable-next-line max-len
+  const selectedLabels = labels.filter(item => (values?.labels || []).includes(item.value))
 
   return (
     <form onSubmit={handleSubmit} className="pb-8">
@@ -73,7 +90,8 @@ export default function EditStory() {
           <TextArea
             name="content"
             required
-            placeholder="Tiempo de escribir tu historia"
+            value={values?.content}
+            placeholder="Time to write your story"
             onChange={handleChange}
           />
         </div>
@@ -86,7 +104,8 @@ export default function EditStory() {
             <Input
               name="title"
               required
-              placeholder="Ingresa un nombre para tu historia"
+              value={values?.title}
+              placeholder="Enter a title for your story"
               onChange={handleChange}
             />
           </div>
@@ -107,8 +126,9 @@ export default function EditStory() {
               options={labels}
               className="basic-multi-select"
               classNamePrefix="select"
-              placeholder="Ingresa etiquetas separadas por comas"
+              placeholder="Select one or more labels"
               onChange={handleSelectChange}
+              value={values?.labels && selectedLabels}
             />
           </div>
           <div className="grow" />
@@ -118,6 +138,12 @@ export default function EditStory() {
       <div className="p-3 pb-5">
         <Button type="submit">Save</Button>
       </div>
+
+      {story && (
+        <div className="p-3 pb-5">
+          <Button onClick={handleBack}>Go back</Button>
+        </div>
+      )}
     </form>
   )
 }

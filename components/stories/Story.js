@@ -2,6 +2,8 @@ import Image from "next/image"
 import Button from "@/components/shared/Button"
 import { Title } from "@/components/shared/Title"
 import ReadingListButton from "@/components/stories/ReadingListButton"
+import EditStoryButton from "@/components/stories/EditStoryButton"
+import RemoveStoryButton from "@/components/stories/RemoveStoryButton"
 
 export default function Story({story}) {
   let date = new Date(story.createdAt * 1000).toLocaleString()
@@ -22,6 +24,10 @@ export default function Story({story}) {
                 />
             </div>
           }
+          <ReadingListButton story={story}/>
+          <EditStoryButton id={story.id}/>
+          <RemoveStoryButton id={story.id}/>
+
           <p>
             Labels: {story.labels.join(", ")}
           </p>
@@ -44,11 +50,10 @@ export default function Story({story}) {
           <p>
             Comments:
           </p>
-          <ReadingListButton story={story}/>
         </div>
         {/* eslint-disable-next-line max-len */}
         <div className="w-full md:w-3/4 bg-slate-400 p-3 mt-2 lg:mt-0 rounded-md shadow-lg">
-          <p>Aqui va la historia escrita</p>
+          <p>{story.content}</p>
         </div>
       </div>
     </div>
