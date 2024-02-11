@@ -1,6 +1,7 @@
 "use client"
 import { useState } from "react"
 import Select from "react-select"
+import { useRouter } from "next/navigation"
 import UploadFile from "@/components/stories/UploadFile"
 import Button from "@/components/shared/Button"
 import TextArea from "@/components/shared/TextArea"
@@ -36,6 +37,7 @@ export default function EditStory() {
     }
   }
 
+  const router = useRouter()
   const handleSubmit = async (e) => {
     e.preventDefault()
     const cleanValues = cleanupValues(values)
@@ -44,6 +46,8 @@ export default function EditStory() {
       method: "POST",
       body: JSON.stringify(cleanValues)
     })
+
+    router.push("/stories/labels/all")
   }
 
   return (
