@@ -7,5 +7,5 @@ export async function GET(request, {params}) {
   const storyRef = doc(db, "stories", id)
   const storySnapshot = await getDoc(storyRef)
 
-  return NextResponse.json(storySnapshot.data())
+  return NextResponse.json({ id, ...storySnapshot.data() })
 }

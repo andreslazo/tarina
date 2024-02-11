@@ -1,6 +1,7 @@
 import Image from "next/image"
 import Button from "@/components/shared/Button"
 import { Title } from "@/components/shared/Title"
+import ReadingListButton from "@/components/stories/ReadingListButton"
 
 export default function Story({story}) {
   let date = new Date(story.createdAt * 1000).toLocaleString()
@@ -11,14 +12,16 @@ export default function Story({story}) {
       <div className="p-4 flex flex-wrap">
         {/* eslint-disable-next-line max-len */}
         <div className="w-full md:w-1/4 bg-slate-500 p-3 rounded-md shadow-lg">
-          <div className="relative h-48">
-            <Image
-              src={story.thumbnail}
-              alt="story-thumbnail"
-              width={190}
-              height={50}
-            />
-          </div>
+          {story.thumbnail &&
+            <div className="relative h-100">
+                <Image
+                  src={story.thumbnail}
+                  alt="story-thumbnail"
+                  width={190}
+                  height={50}
+                />
+            </div>
+          }
           <p>
             Labels: {story.labels.join(", ")}
           </p>
@@ -41,6 +44,7 @@ export default function Story({story}) {
           <p>
             Comments:
           </p>
+          <ReadingListButton story={story}/>
         </div>
         {/* eslint-disable-next-line max-len */}
         <div className="w-full md:w-3/4 bg-slate-400 p-3 mt-2 lg:mt-0 rounded-md shadow-lg">

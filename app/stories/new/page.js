@@ -8,7 +8,7 @@ export const metadata = {
 export default function NewStoryPage() {
   return (
     <>
-      <Title>New Story</Title>
+      <Title>New story</Title>
       <EditStory />
     </>
   )

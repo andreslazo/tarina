@@ -1,9 +1,10 @@
 "use client"
 
+import Image from "next/image"
+import Link from "next/link"
 import { usePathname } from "next/navigation"
 import NavBarSubMenu from "@/components/layout/NavBarSubMenu"
-import Link from "next/link"
-import Image from "next/image"
+import ReadingListWidget from "@/components/shared/ReadingListWidget"
 
 export default function NavBar() {
   const contactSubMenuElements = [
@@ -52,6 +53,8 @@ export default function NavBar() {
         <NavBarSubMenu elements={contactSubMenuElements}>
           Contact
         </NavBarSubMenu>
+
+        <ReadingListWidget />
       </ul>
 
       <NavBarSubMenu
