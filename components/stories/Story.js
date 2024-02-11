@@ -4,11 +4,10 @@ import { Title } from "@/components/shared/Title"
 
 export default function Story({story}) {
   let date = new Date(story.createdAt * 1000).toLocaleString()
-  console.log(date)
 
   return (
     <div className="items-center justify-start p-2 h-screen">
-      <Title>{story.name}</Title>
+      <Title>{story.title}</Title>
       <div className="p-4 flex flex-wrap">
         {/* eslint-disable-next-line max-len */}
         <div className="w-full md:w-1/4 bg-slate-500 p-3 rounded-md shadow-lg">

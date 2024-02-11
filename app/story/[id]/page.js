@@ -9,7 +9,7 @@ export async function generateMetadata({params, searchParams}, parent) {
   ).then(res => res.json())
 
   return {
-    title: `Story - ${story.name}`
+    title: `Story - ${story.title}`
   }
 }
 

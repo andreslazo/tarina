@@ -7,12 +7,14 @@ export default function StoryThumbnail({story}) {
       {/* eslint-disable-next-line max-len */}
       <div className="p-4 bg-slate-600 hover:bg-slate-500 rounded shadow-sm hover:shadow-md">
         <div className="relative h-48">
-          <Image
-            src={story.thumbnail}
-            alt="story-thumbnail"
-            width={190}
-            height={50}
-          />
+          {story.thumbnail && (
+            <Image
+              src={story.thumbnail}
+              alt="story-thumbnail"
+              width={110}
+              height={50}
+            />
+          )}
         </div>
         <div className="text-xl font-bold">
           {story.title}
