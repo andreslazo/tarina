@@ -19,11 +19,22 @@ export default function EditStory() {
     })
   }
 
+  const cleanupValues = (values) => {
+    return {
+      ...values,
+      labels: values.labels.split(",").map(label => label.trim()),
+      createdAt: Math.floor(Date.now() / 1000),
+      userId: 123
+    }
+  }
+
   const handleSubmit = async (e) => {
     e.preventDefault()
+    const cleanValues = cleanupValues(values)
+
     await fetch(`${process.env.NEXT_PUBLIC_URL}/api/story`, {
       method: "POST",
-      body: JSON.stringify(values)
+      body: JSON.stringify(cleanValues)
     })
   }
 

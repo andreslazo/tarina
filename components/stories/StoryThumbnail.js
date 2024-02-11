@@ -15,10 +15,10 @@ export default function StoryThumbnail({story}) {
           />
         </div>
         <div className="text-xl font-bold">
-          {story.name}
+          {story.title}
         </div>
         <div className="text-sm">
-          Likes: {story.likes}
+          Likes: {story.likes || 0}
         </div>
       </div>
     </Link>

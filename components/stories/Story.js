@@ -3,6 +3,9 @@ import Button from "@/components/shared/Button"
 import { Title } from "@/components/shared/Title"
 
 export default function Story({story}) {
+  let date = new Date(story.createdAt * 1000).toLocaleString()
+  console.log(date)
+
   return (
     <div className="items-center justify-start p-2 h-screen">
       <Title>{story.name}</Title>
@@ -23,18 +26,18 @@ export default function Story({story}) {
           <div className="flex items-center space-x-4">
             <Button>Dislike</Button>
             <p>
-              Likes: {story.likes}
+              Likes: {story.likes || 0}
             </p>
             <Button>Like</Button>
           </div>
           <p>
-            Views: {story.views}
+            Views: {story.views || 0}
           </p>
           <p>
             Written by: {story.userId}
           </p>
           <p>
-            Created at: {story.createdAt}
+            Created at: {date}
           </p>
           <p>
             Comments:
