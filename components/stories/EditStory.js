@@ -1,9 +1,11 @@
 "use client"
 import { useState } from "react"
+import Select from "react-select"
 import UploadFile from "@/components/stories/UploadFile"
 import Button from "@/components/shared/Button"
 import TextArea from "@/components/shared/TextArea"
 import Input from "@/components/shared/Input"
+import { labels } from "@/data/labels"
 
 export default function EditStory() {
   const [values, setValues] = useState({
@@ -19,10 +21,16 @@ export default function EditStory() {
     })
   }
 
+  const handleSelectChange = (selectedOptions) => {
+    setValues({
+      ...values,
+      labels: selectedOptions.map(option => option.value)
+    })
+  }
+
   const cleanupValues = (values) => {
     return {
       ...values,
-      labels: values.labels.split(",").map(label => label.trim()),
       createdAt: Math.floor(Date.now() / 1000),
       userId: 123
     }
@@ -71,11 +79,14 @@ export default function EditStory() {
             Labels:
           </p>
           <div className="py-1">
-            <Input
+            <Select
+              isMulti
               name="labels"
-              required
+              options={labels}
+              className="basic-multi-select"
+              classNamePrefix="select"
               placeholder="Ingresa etiquetas separadas por comas"
-              onChange={handleChange}
+              onChange={handleSelectChange}
             />
           </div>
           <div className="grow" />

@@ -1,6 +1,5 @@
 import Link from "next/link"
-
-const allLabels = ["all", "fantasy"]
+import { labels as allLabels } from "@/data/labels"
 
 export default function LabelsList() {
   // eslint-disable-next-line max-len
@@ -11,11 +10,11 @@ export default function LabelsList() {
       <p className="text-sm">Filter by:</p>
       {allLabels.map((label, index) => (
         <Link
-          href={`/stories/labels/${label}`}
+          href={`/stories/labels/${label.value}`}
           key={index}
           className={buttonClassname}
         >
-          <p className="text-sm">{label}</p>
+          <p className="text-sm">{label.label}</p>
         </Link>
       ))}
     </div>
