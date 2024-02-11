@@ -1,5 +1,6 @@
 import StoryThumbnail from "@/components/stories/StoryThumbnail"
 import LabelsList from "@/components/stories/LabelsList"
+import FullScreenLoading from "@/components/shared/FullScreenLoading"
 import { Suspense } from "react"
 
 export default async function StoryList({ label }) {
@@ -15,7 +16,7 @@ export default async function StoryList({ label }) {
   return (
     <>
       <LabelsList />
-      <Suspense fallback={<div>Loading section...</div>}>
+      <Suspense fallback={<FullScreenLoading />}>
         <div className="grid lg:grid-cols-3 grid-cols-1 gap-4 p-3 pb-16">
           {stories.map((story, index) => (
             <StoryThumbnail key={index} story={story} />
