@@ -2,6 +2,7 @@
 import { useState } from "react"
 import Select from "react-select"
 import { useRouter } from "next/navigation"
+import Image from "next/image"
 import UploadFile from "@/components/stories/UploadFile"
 import Button from "@/components/shared/Button"
 import TextArea from "@/components/shared/TextArea"
@@ -13,6 +14,7 @@ export default function EditStory() {
     title: "",
     content: "",
     labels: "",
+    image: null
   })
 
   const handleChange = (e) => {
@@ -27,6 +29,20 @@ export default function EditStory() {
       ...values,
       labels: selectedOptions.map(option => option.value)
     })
+  }
+
+  const handleImageChange = (e) => {
+    const file = e.target.files[0]
+    if (file) {
+      const reader = new FileReader()
+      reader.onloadend = () => {
+        setValues({
+          ...values,
+          image: reader.result
+        })
+      }
+      reader.readAsDataURL(file)
+    }
   }
 
   const cleanupValues = (values) => {
@@ -78,8 +94,10 @@ export default function EditStory() {
             Thumbnail (Optional):
           </div>
           <div className="py-2">
-            <UploadFile />
-          </div><p className="py-1">
+            <input type="file" accept="image/*" onChange={handleImageChange} />
+            {values.image && <Image src={values.image} alt="Preview" width={100} height={100}/>}
+          </div>
+          <p className="py-1">
             Labels:
           </p>
           <div className="py-1">

@@ -1,14 +1,20 @@
 import { NextResponse } from "next/server"
-import { db } from "@/app/firebase/config"
-import { collection, addDoc } from "firebase/firestore"
+import { db, storage } from "@/app/firebase/config"
+import { collection, addDoc, updateDoc } from "firebase/firestore"
+import { ref, uploadString, getDownloadURL } from "firebase/storage"
 
 export async function POST(request) {
   const formData = await request.json()
-  console.log(formData)
+  const { image, ...rest } = formData
 
-  // Add a new document with a generated id.
   const storyRef = collection(db, "stories")
-  await addDoc(storyRef, formData)
+  const docRef = await addDoc(storyRef, rest)
+
+  const imageRef = ref(storage, `images/${docRef.id}`)
+  await uploadString(imageRef, image, "data_url")
+  const imageURL = await getDownloadURL(imageRef)
+
+  await updateDoc(docRef, { thumbnail: imageURL })
 
   return NextResponse.json("Data received correctly")
 }
