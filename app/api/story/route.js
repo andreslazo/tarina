@@ -1,5 +1,5 @@
 import { NextResponse } from "next/server"
-import { collection, addDoc, getDoc, updateDoc } from "firebase/firestore"
+import { collection, addDoc, getDoc, doc, updateDoc } from "firebase/firestore"
 import { ref, uploadString, getDownloadURL } from "firebase/storage"
 import { db, storage } from "@/app/firebase/config"
 
@@ -8,14 +8,20 @@ export async function POST(request) {
   const { image, ...rest } = formData
 
   const storyRef = collection(db, "stories")
-  const docRef = await addDoc(storyRef, rest)
+  const createdDoc = await addDoc(storyRef, rest)
+  const id = createdDoc.id
 
-  const imageRef = ref(storage, `images/${docRef.id}`)
-  await uploadString(imageRef, image, "data_url")
-  const imageURL = await getDownloadURL(imageRef)
+  if(image) {
+    const updatedStoryRef = doc(db, "stories", id)
+    const imageRef = ref(storage, `images/${id}`)
+    await uploadString(imageRef, image, "data_url")
+    const imageURL = await getDownloadURL(imageRef)
 
-  await updateDoc(docRef, { thumbnail: imageURL })
-  const createdDoc = await getDoc(storyRef)
+    await updateDoc(updatedStoryRef, { thumbnail: imageURL })
+  }
 
-  return NextResponse.json({ id, ...createdDoc.data() })
+  const createdStoryRef = doc(db, "stories", id)
+  const updatedDoc = await getDoc(createdStoryRef)
+
+  return NextResponse.json({ id, ...updatedDoc.data() })
 }

@@ -1,12 +1,17 @@
 import Image from "next/image"
 import Button from "@/components/shared/Button"
 import { Title } from "@/components/shared/Title"
+import NotFound from "@/app/not-found"
 import ReadingListButton from "@/components/stories/ReadingListButton"
 import EditStoryButton from "@/components/stories/EditStoryButton"
 import RemoveStoryButton from "@/components/stories/RemoveStoryButton"
 
 export default function Story({story}) {
   let date = new Date(story.createdAt * 1000).toLocaleString()
+
+  if (!story?.title) {
+    return <NotFound />
+  }
 
   return (
     <div className="items-center justify-start p-2 h-screen">

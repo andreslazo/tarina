@@ -65,20 +65,26 @@ export default function EditStory({story}) {
     e.preventDefault()
 
     if (story) {
-      await fetch(`${process.env.NEXT_PUBLIC_URL}/api/story/${story.id}`, {
+      const savedStory = await fetch(
+        `${process.env.NEXT_PUBLIC_URL}/api/story/${story.id}`, {
         method: "PATCH",
         body: JSON.stringify(values)
       })
+
+      const data = await savedStory.json()
+
+      router.refresh(`/story/${data.id}`)
+      router.push(`/story/${data.id}`)
     } else {
       const cleanValues = cleanupValues(values)
       await fetch(`${process.env.NEXT_PUBLIC_URL}/api/story`, {
         method: "POST",
         body: JSON.stringify(cleanValues)
       })
-    }
 
-    router.refresh("/stories/labels/all")
-    router.push("/stories/labels/all")
+      router.refresh("/stories/labels/all")
+      router.push("/stories/labels/all")
+    }
   }
 
   // eslint-disable-next-line max-len
