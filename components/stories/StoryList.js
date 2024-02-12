@@ -3,16 +3,7 @@ import LabelsList from "@/components/stories/LabelsList"
 import FullScreenLoading from "@/components/shared/FullScreenLoading"
 import { Suspense } from "react"
 
-export default async function StoryList({ label }) {
-  const stories = await fetch(
-    `${process.env.NEXT_PUBLIC_URL}/api/stories/${label}`, {
-      cache: "no-store",
-      next: {
-        tags: ["stories"]
-      }
-    },
-  ).then(res => res.json())
-
+export default async function StoryList({ stories }) {
   return (
     <>
       <LabelsList />

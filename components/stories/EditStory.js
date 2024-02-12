@@ -77,6 +77,7 @@ export default function EditStory({story}) {
       })
     }
 
+    router.refresh("/stories/labels/all")
     router.push("/stories/labels/all")
   }
 

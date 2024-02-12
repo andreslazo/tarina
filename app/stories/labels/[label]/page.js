@@ -12,17 +12,20 @@ export function generateStaticParams() {
   return labels.map(label => ({ params: { label: label.value } }))
 }
 
-export const revalidate = 3600
-
-export default function Labels({params}) {
+export default async function Labels({params}) {
   const { label } = params
+
+  const stories = await fetch(
+    `${process.env.NEXT_PUBLIC_URL}/api/stories/${label}`,
+    { cache: "no-store" }
+  ).then(res => res.json())
 
   return (
     <>
       <Title>
         {label === "all" ? "All Stories" : `Stories with label: ${label}`}
       </Title>
-      <StoryList label={label} />
+      <StoryList stories={stories} />
     </>
   )
 }

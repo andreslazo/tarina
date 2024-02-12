@@ -13,6 +13,7 @@ export default function RemoveStoryButton({id}) {
       method: "DELETE"
     })
 
+    router.refresh("/stories/labels/all")
     router.push("/stories/labels/all")
   }
 
