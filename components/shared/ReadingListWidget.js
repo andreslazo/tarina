@@ -15,7 +15,7 @@ const ReadingListWidget = () => {
           width={30}
           height={30}
       />
-      <span>{readingList.length}</span>
+      <span className="p-1">{readingList.length}</span>
     </Link>
   )
 }
