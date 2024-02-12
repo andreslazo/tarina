@@ -34,7 +34,7 @@ export default function Story({story}) {
           <RemoveStoryButton id={story.id}/>
 
           <p>
-            Labels: {story.labels.join(", ")}
+            Labels: {story.labels && story.labels.join(", ")}
           </p>
           <div className="flex items-center space-x-4">
             <Button>Dislike</Button>
