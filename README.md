@@ -18,12 +18,14 @@ At the moment I work on:
 - First steps towards a fully responsive app and design
 - Firebase usage
 - Loading states
+- Basic CRUD
+- Firebase login
 
 ## Getting Started
 
 1. Be sure you have the latest requirements. Using a runtime version manager like [asdf](https://asdf-vm.com/) is highly recommended.
 
-- Node JS 20.11.0
+- Node JS 20.11.1
 
 2. Install all the dependencies
 

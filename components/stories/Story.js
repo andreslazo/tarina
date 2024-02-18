@@ -1,5 +1,5 @@
 import Image from "next/image"
-import Button from "@/components/shared/Button"
+import Likes from "@/components/stories/Likes"
 import { Title } from "@/components/shared/Title"
 import NotFound from "@/app/not-found"
 import ReadingListButton from "@/components/stories/ReadingListButton"
@@ -36,13 +36,7 @@ export default function Story({story}) {
           <p>
             Labels: {story.labels && story.labels.join(", ")}
           </p>
-          <div className="flex items-center space-x-4">
-            <Button>Dislike</Button>
-            <p>
-              Likes: {story.likes || 0}
-            </p>
-            <Button>Like</Button>
-          </div>
+          <Likes story={story}/>
           <p>
             Views: {story.views || 0}
           </p>

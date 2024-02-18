@@ -4,9 +4,13 @@ import Image from "next/image"
 import Link from "next/link"
 import { usePathname } from "next/navigation"
 import NavBarSubMenu from "@/components/layout/NavBarSubMenu"
+import LoginButton from "@/components/auth/LoginButton"
 import ReadingListWidget from "@/components/shared/ReadingListWidget"
+import { useAuthContext } from "@/components/context/AuthContext"
 
 export default function NavBar() {
+  const { user } = useAuthContext()
+
   const contactSubMenuElements = [
     {name: "Phone", href: "tel:+1-555-555-5555"},
     {name: "Telegram Group", href: "https://t.me/1XXXXXXXXXX"},
@@ -22,13 +26,15 @@ export default function NavBar() {
 
   return (
     <nav className="flex items-center gap-x-4 p-2">
-      <Link
-        href="/stories/new"
-        // eslint-disable-next-line max-len
-        className="bg-slate-950 hover:bg-slate-900 text-white font-bold py-2 px-4 rounded shadow-lg hover:shadow-xl"
-      >
-        New story
-      </Link>
+      {user.logged && (
+        <Link
+          href="/stories/new"
+          // eslint-disable-next-line max-len
+          className="bg-slate-950 hover:bg-slate-900 text-white font-bold py-2 px-4 rounded shadow-lg hover:shadow-xl"
+        >
+          New story
+        </Link>
+      )}
       <ul className="md:flex hidden items-center">
         {
           menuElements.map(element => {
@@ -55,6 +61,7 @@ export default function NavBar() {
         </NavBarSubMenu>
 
         <ReadingListWidget />
+        <LoginButton />
       </ul>
 
       <NavBarSubMenu

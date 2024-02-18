@@ -2,8 +2,10 @@
 
 import { useRouter } from "next/navigation"
 import Button from "@/components/shared/Button"
+import { useAuthContext } from "@/components/context/AuthContext"
 
 export default function RemoveStoryButton({id}) {
+  const { user } = useAuthContext()
   const router = useRouter()
 
   const handleDeleteStory = async (e) => {
@@ -15,6 +17,10 @@ export default function RemoveStoryButton({id}) {
 
     router.refresh("/stories/labels/all")
     router.push("/stories/labels/all")
+  }
+
+  if (!user.logged) {
+    return null
   }
 
   return(
