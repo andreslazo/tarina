@@ -43,7 +43,6 @@ const LoginForm = () => {
           value={values.email}
           required
           placeholder="Email"
-          className="p-2 rounded w-full border border-blue-100 block my-4"
           name="email"
           onChange={handleChange}
         />
@@ -52,7 +51,6 @@ const LoginForm = () => {
           value={values.password}
           required
           placeholder="Password"
-          className="p-2 rounded w-full border border-blue-100 block my-4"
           name="password"
           onChange={handleChange}
         />
