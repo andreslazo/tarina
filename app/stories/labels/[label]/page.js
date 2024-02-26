@@ -1,15 +1,10 @@
 import StoryList from "@/components/stories/StoryList"
 import { Title } from "@/components/shared/Title"
-import { labels } from "@/data/labels"
 
 export async function generateMetadata({params, searchParams}, parent) {
   return {
     title: `Stories - ${params.label}`
   }
-}
-
-export function generateStaticParams() {
-  return labels.map(label => ({ params: { label: label.value } }))
 }
 
 export default async function Labels({params}) {
