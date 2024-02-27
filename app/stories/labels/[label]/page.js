@@ -11,7 +11,7 @@ export default async function Labels({params}) {
   const { label } = params
 
   const stories = await fetch(
-    `${process.env.NEXT_PUBLIC_URL}/api/stories/${label}`,
+    `${process.env.VERCEL_URL}/api/stories/${label}`,
     { cache: "no-store" }
   ).then(res => res.json())
 

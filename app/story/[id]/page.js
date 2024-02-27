@@ -4,7 +4,7 @@ export async function generateMetadata({params, searchParams}, parent) {
   const { id } = params
 
   const story = await fetch(
-    `${process.env.NEXT_PUBLIC_URL}/api/story/${id}`,
+    `${process.env.VERCEL_URL}/api/story/${id}`,
     {cache: "no-store"}
   ).then(res => res.json())
 
@@ -17,7 +17,7 @@ export default async function StoryPage({params}) {
   const { id } = params
 
   const story = await fetch(
-    `${process.env.NEXT_PUBLIC_URL}/api/story/${id}`,
+    `${process.env.VERCEL_URL}/api/story/${id}`,
     {cache: "no-store"}
   ).then(res => res.json())
 

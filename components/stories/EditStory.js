@@ -66,7 +66,7 @@ export default function EditStory({story}) {
 
     if (story) {
       const savedStory = await fetch(
-        `${process.env.NEXT_PUBLIC_URL}/api/story/${story.id}`, {
+        `${process.env.VERCEL_URL}/api/story/${story.id}`, {
         method: "PATCH",
         body: JSON.stringify(values)
       })
@@ -77,7 +77,7 @@ export default function EditStory({story}) {
       router.push(`/story/${data.id}`)
     } else {
       const cleanValues = cleanupValues(values)
-      await fetch(`${process.env.NEXT_PUBLIC_URL}/api/story`, {
+      await fetch(`${process.env.VERCEL_URL}/api/story`, {
         method: "POST",
         body: JSON.stringify(cleanValues)
       })
