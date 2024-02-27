@@ -4,9 +4,7 @@ import { db } from "@/app/firebase/config"
 
 export async function GET(request, {params}) {
   const { label } = params
-  console.log(label)
   const storiesRef = collection(db, "stories")
-  console.log(storiesRef)
   const storiesQuery =
     label === "all" ?
       storiesRef :

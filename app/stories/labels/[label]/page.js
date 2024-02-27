@@ -15,9 +15,11 @@ export default async function Labels({params}) {
 
   const stories = await fetch(
     url, { cache: "no-store" }
-  ).then(res => res.json())
+  ).then(res => {
+    console.log(res)
+    return res
+  }).then(res => res.json())
 
-  console.log(stories)
   return (
     <>
       <Title>
