@@ -66,7 +66,8 @@ export default function EditStory({story}) {
 
     if (story) {
       const savedStory = await fetch(
-        `https://${process.env.VERCEL_URL}/api/story/${story.id}`, {
+        // eslint-disable-next-line max-len
+        `${process.env.VERCEL_PROTOCOL}://${process.env.VERCEL_URL}/api/story/${story.id}`, {
         method: "PATCH",
         body: JSON.stringify(values)
       })
@@ -77,7 +78,8 @@ export default function EditStory({story}) {
       router.push(`/story/${data.id}`)
     } else {
       const cleanValues = cleanupValues(values)
-      await fetch(`https://${process.env.VERCEL_URL}/api/story`, {
+      // eslint-disable-next-line max-len
+      await fetch(`${process.env.VERCEL_PROTOCOL}://${process.env.VERCEL_URL}/api/story`, {
         method: "POST",
         body: JSON.stringify(cleanValues)
       })

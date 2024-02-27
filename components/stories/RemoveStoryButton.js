@@ -11,7 +11,8 @@ export default function RemoveStoryButton({id}) {
   const handleDeleteStory = async (e) => {
     e.preventDefault()
 
-    await fetch(`https://${process.env.VERCEL_URL}/api/story/${id}`, {
+    // eslint-disable-next-line max-len
+    await fetch(`${process.env.VERCEL_PROTOCOL}://${process.env.VERCEL_URL}/api/story/${id}`, {
       method: "DELETE"
     })
 

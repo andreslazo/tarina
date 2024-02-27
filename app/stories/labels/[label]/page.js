@@ -9,7 +9,8 @@ export async function generateMetadata({params, searchParams}, parent) {
 
 export default async function Labels({params}) {
   const { label } = params
-  const url = `https://${process.env.VERCEL_URL}/api/stories/${label}`
+  // eslint-disable-next-line max-len
+  const url = `${process.env.VERCEL_PROTOCOL}://${process.env.VERCEL_URL}/api/stories/${label}`
   console.log(url)
 
   const stories = await fetch(
