@@ -19,10 +19,9 @@ export default async function Labels({params}) {
   console.log(process.env.NEXT_PUBLIC_FIREBASE_APP_ID)
   const stories = await fetch(
     url, { cache: "no-store" }
-  ).then(res => {
-    console.log(res)
-    return res
-  }).then(res => res.json())
+  )
+  const data = await res.text()
+  console.log(data)
 
   return (
     <>
