@@ -20,7 +20,7 @@ export default async function Labels({params}) {
   const stories = await fetch(
     url, { cache: "no-store" }
   )
-  const data = await res.text()
+  const data = await stories.text()
   console.log(data)
 
   return (
