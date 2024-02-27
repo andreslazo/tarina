@@ -9,12 +9,14 @@ export async function generateMetadata({params, searchParams}, parent) {
 
 export default async function Labels({params}) {
   const { label } = params
+  const url = `https://${process.env.VERCEL_URL}/api/stories/${label}`
+  console.log(url)
 
   const stories = await fetch(
-    `https://${process.env.VERCEL_URL}/api/stories/${label}`,
-    { cache: "no-store" }
+    url, { cache: "no-store" }
   ).then(res => res.json())
 
+  console.log(stories)
   return (
     <>
       <Title>
