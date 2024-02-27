@@ -11,7 +11,7 @@ export default function RemoveStoryButton({id}) {
   const handleDeleteStory = async (e) => {
     e.preventDefault()
 
-    await fetch(`${process.env.VERCEL_URL}/api/story/${id}`, {
+    await fetch(`https://${process.env.VERCEL_URL}/api/story/${id}`, {
       method: "DELETE"
     })
 

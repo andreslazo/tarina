@@ -9,7 +9,7 @@ export default async function EditingStoryPage({params}) {
   const { id } = params
 
   const story = await fetch(
-    `${process.env.VERCEL_URL}/api/story/${id}`,
+    `https://${process.env.VERCEL_URL}/api/story/${id}`,
     {cache: "no-store"}
   ).then(res => res.json())
 
