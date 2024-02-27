@@ -13,15 +13,9 @@ export default async function Labels({params}) {
   const url = `${process.env.VERCEL_PROTOCOL}://${process.env.VERCEL_URL}/api/stories/${label}`
   console.log(url)
 
-  console.log(process.env.NEXT_PUBLIC_FIREBASE_AUTH_DOMAIN)
-  console.log(process.env.NEXT_PUBLIC_FIREBASE_PROJECT_ID)
-  console.log(process.env.NEXT_PUBLIC_FIREBASE_STORAGE_BUCKET)
-  console.log(process.env.NEXT_PUBLIC_FIREBASE_APP_ID)
   const stories = await fetch(
     url, { cache: "no-store" }
-  )
-  const data = await stories.text()
-  console.log(data)
+  ).then(res => res.json())
 
   return (
     <>
