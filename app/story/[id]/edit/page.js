@@ -10,7 +10,7 @@ export default async function EditingStoryPage({params}) {
 
   const story = await fetch(
     // eslint-disable-next-line max-len
-    `${process.env.VERCEL_PROTOCOL}://${process.env.VERCEL_URL}/api/story/${id}`,
+    `${process.env.NEXT_PUBLIC_VERCEL_PROTOCOL}://${process.env.NEXT_PUBLIC_VERCEL_URL}/api/story/${id}`,
     {cache: "no-store"}
   ).then(res => res.json())
 

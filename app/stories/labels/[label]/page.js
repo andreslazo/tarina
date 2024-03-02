@@ -10,8 +10,7 @@ export async function generateMetadata({params, searchParams}, parent) {
 export default async function Labels({params}) {
   const { label } = params
   // eslint-disable-next-line max-len
-  const url = `${process.env.VERCEL_PROTOCOL}://${process.env.VERCEL_URL}/api/stories/${label}`
-  console.log(url)
+  const url = `${process.env.NEXT_PUBLIC_VERCEL_PROTOCOL}://${process.env.NEXT_PUBLIC_VERCEL_URL}/api/stories/${label}`
 
   const stories = await fetch(
     url, { cache: "no-store" }

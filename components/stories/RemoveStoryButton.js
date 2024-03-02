@@ -12,7 +12,7 @@ export default function RemoveStoryButton({id}) {
     e.preventDefault()
 
     // eslint-disable-next-line max-len
-    await fetch(`${process.env.VERCEL_PROTOCOL}://${process.env.VERCEL_URL}/api/story/${id}`, {
+    await fetch(`${process.env.NEXT_PUBLIC_VERCEL_PROTOCOL}://${process.env.NEXT_PUBLIC_VERCEL_URL}/api/story/${id}`, {
       method: "DELETE"
     })
 
