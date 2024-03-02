@@ -4,6 +4,7 @@ import Select from "react-select"
 import { useRouter } from "next/navigation"
 import Image from "next/image"
 import UploadFile from "@/components/stories/UploadFile"
+import { createStory, editStory } from "@/components/redirect"
 import Button from "@/components/shared/Button"
 import TextArea from "@/components/shared/TextArea"
 import Input from "@/components/shared/Input"
@@ -63,29 +64,12 @@ export default function EditStory({story}) {
 
   const handleSubmit = async (e) => {
     e.preventDefault()
+    const cleanValues = cleanupValues(values)
 
     if (story) {
-      const savedStory = await fetch(
-        // eslint-disable-next-line max-len
-        `${process.env.NEXT_PUBLIC_VERCEL_PROTOCOL}://${process.env.NEXT_PUBLIC_VERCEL_URL}/api/story/${story.id}`, {
-        method: "PATCH",
-        body: JSON.stringify(values)
-      })
-
-      const data = await savedStory.json()
-
-      router.refresh(`/story/${data.id}`)
-      router.push(`/story/${data.id}`)
+      editStory(story, cleanValues)
     } else {
-      const cleanValues = cleanupValues(values)
-      // eslint-disable-next-line max-len
-      await fetch(`${process.env.NEXT_PUBLIC_VERCEL_PROTOCOL}://${process.env.NEXT_PUBLIC_VERCEL_URL}/api/story`, {
-        method: "POST",
-        body: JSON.stringify(cleanValues)
-      })
-
-      router.refresh("/stories/labels/all")
-      router.push("/stories/labels/all")
+      createStory(cleanValues)
     }
   }
 
