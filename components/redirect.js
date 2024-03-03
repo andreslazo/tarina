@@ -2,6 +2,7 @@
 import { redirect } from "next/navigation"
 
 export async function createStory(cleanValues) {
+  // eslint-disable-next-line max-len
   await fetch(`${process.env.NEXT_PUBLIC_VERCEL_PROTOCOL}://${process.env.NEXT_PUBLIC_VERCEL_URL}/api/story`, {
     method: "POST",
     body: JSON.stringify(cleanValues)
