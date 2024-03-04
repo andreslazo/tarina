@@ -3,12 +3,20 @@
 import Link from "next/link"
 import Button from "@/components/shared/Button"
 import { useAuthContext } from "@/components/context/AuthContext"
+import { homepageRedirect } from "@/components/redirect"
 
 export default function LoginButton() {
   const { user, logout } = useAuthContext()
 
+  const handleLogout = (e) => {
+    e.preventDefault()
+
+    logout()
+    homepageRedirect()
+  }
+
   return user.logged ? (
-    <Button onClick={logout}>Logout</Button>
+    <Button onClick={handleLogout}>Logout</Button>
   ) : (
     <Link
       href="/login"

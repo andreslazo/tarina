@@ -1,20 +1,13 @@
 "use client"
-import { useRef } from "react"
-import Button from "@/components/shared/Button"
+import Image from "next/image"
 
-export default function UploadFile() {
-  const fileInputRef = useRef(null)
-
-  const handleBrowseClick = () => {
-    fileInputRef.current.click()
-  }
-
+export default function UploadFile({onChange, image}) {
   return(
     <>
-      <input type="file" ref={fileInputRef} style={{ display: "none" }} />
-      <Button className="absolute top-0 right-0" onClick={handleBrowseClick}>
-        Browse
-      </Button>
+      <input type="file" accept="image/*" onChange={onChange} />
+      {
+        image && <Image src={image} alt="Preview" width={100} height={100}/>
+      }
     </>
 
   )

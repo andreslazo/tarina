@@ -2,7 +2,6 @@
 import { useState } from "react"
 import Select from "react-select"
 import { useRouter } from "next/navigation"
-import Image from "next/image"
 import UploadFile from "@/components/stories/UploadFile"
 import { createStory, editStory } from "@/components/redirect"
 import { useAuthContext } from "@/components/context/AuthContext"
@@ -108,8 +107,7 @@ export default function EditStory({story}) {
             Thumbnail (Optional):
           </div>
           <div className="py-2">
-            <input type="file" accept="image/*" onChange={handleImageChange} />
-            {values.image && <Image src={values.image} alt="Preview" width={100} height={100}/>}
+            <UploadFile onChange={handleImageChange} image={values?.image} />
           </div>
           <p className="py-1">
             Labels:

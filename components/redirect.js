@@ -30,3 +30,7 @@ export async function deleteStory(id) {
 
   redirect("/stories/labels/all")
 }
+
+export async function homepageRedirect() {
+  redirect("/")
+}

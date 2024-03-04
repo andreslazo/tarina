@@ -3,7 +3,7 @@ import SearchStory from "@/components/stories/SearchStory"
 
 export async function generateMetadata({params, searchParams}, parent) {
   return {
-    title: "Search stories"
+    title: "Search stories - Tarina"
   }
 }
 
