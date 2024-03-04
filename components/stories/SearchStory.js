@@ -20,7 +20,12 @@ export default function SearchStory() {
     const url = `${process.env.NEXT_PUBLIC_URL}/api/stories/search?title=${title}`
     const fetchedStories =
       await fetch(url, { cache: "no-store" }).then(res => res.json())
-    setStories(fetchedStories)
+
+    if (fetchedStories.length === 0) {
+      window.alert("No stories found.")
+    } else {
+      setStories(fetchedStories)
+    }
   }
 
   return (
@@ -35,7 +40,14 @@ export default function SearchStory() {
         />
         <Button type="submit">Search</Button>
       </form>
-      <StoryList stories={stories} />
+      {stories.length > 0 ? (
+        <StoryList stories={stories} />
+      ) : (
+        <div>
+          Type in the EXACT NAME of your story and
+          click the search button to begin.
+        </div>
+      )}
     </>
   )
 }
