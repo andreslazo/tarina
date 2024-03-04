@@ -42,7 +42,7 @@ export default function Story({story}) {
             Written by: {story.userEmail}
           </p>
           <p>
-            Created at: {date}
+            Last updated at: {date}
           </p>
           <EditStoryButton story={story}/>
           <RemoveStoryButton story={story}/>
