@@ -30,8 +30,6 @@ export default function Story({story}) {
             </div>
           }
           <ReadingListButton story={story}/>
-          <EditStoryButton id={story.id}/>
-          <RemoveStoryButton id={story.id}/>
 
           <p>
             Labels: {story.labels && story.labels.join(", ")}
@@ -41,11 +39,13 @@ export default function Story({story}) {
             Views: {story.views || 0}
           </p>
           <p>
-            Written by: {story.userId}
+            Written by: {story.userEmail}
           </p>
           <p>
             Created at: {date}
           </p>
+          <EditStoryButton story={story}/>
+          <RemoveStoryButton story={story}/>
         </div>
         {/* eslint-disable-next-line max-len */}
         <div className="w-full md:w-3/4 bg-slate-400 p-3 mt-2 lg:mt-0 rounded-md shadow-lg">

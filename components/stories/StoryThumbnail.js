@@ -20,6 +20,9 @@ export default function StoryThumbnail({story}) {
           {story.title}
         </div>
         <div className="text-sm">
+          By: {story.userEmail}
+        </div>
+        <div className="text-sm">
           Likes: {story.likes || 0}
         </div>
       </div>

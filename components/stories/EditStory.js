@@ -5,12 +5,14 @@ import { useRouter } from "next/navigation"
 import Image from "next/image"
 import UploadFile from "@/components/stories/UploadFile"
 import { createStory, editStory } from "@/components/redirect"
+import { useAuthContext } from "@/components/context/AuthContext"
 import Button from "@/components/shared/Button"
 import TextArea from "@/components/shared/TextArea"
 import Input from "@/components/shared/Input"
 import { labels } from "@/data/labels"
 
 export default function EditStory({story}) {
+  const { user } = useAuthContext()
   const [values, setValues] = useState({
     title: story?.title || "",
     content: story?.content || "",
@@ -58,7 +60,7 @@ export default function EditStory({story}) {
     return {
       ...values,
       createdAt: Math.floor(Date.now() / 1000),
-      userId: 123
+      userEmail: user.email
     }
   }
 
