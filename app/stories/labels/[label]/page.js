@@ -1,4 +1,5 @@
 import StoryList from "@/components/stories/StoryList"
+import LabelsList from "@/components/stories/LabelsList"
 import { Title } from "@/components/shared/Title"
 
 export async function generateMetadata({params, searchParams}, parent) {
@@ -10,7 +11,7 @@ export async function generateMetadata({params, searchParams}, parent) {
 export default async function Labels({params}) {
   const { label } = params
   // eslint-disable-next-line max-len
-  const url = `${process.env.NEXT_PUBLIC_VERCEL_PROTOCOL}://${process.env.NEXT_PUBLIC_VERCEL_URL}/api/stories/${label}`
+  const url = `${process.env.NEXT_PUBLIC_URL}/api/stories/${label}`
 
   const stories = await fetch(
     url, { cache: "no-store" }
@@ -21,6 +22,7 @@ export default async function Labels({params}) {
       <Title>
         {label === "all" ? "All Stories" : `Stories with label: ${label}`}
       </Title>
+      <LabelsList />
       <StoryList stories={stories} />
     </>
   )

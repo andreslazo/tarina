@@ -3,7 +3,7 @@ import { redirect } from "next/navigation"
 
 export async function createStory(cleanValues) {
   // eslint-disable-next-line max-len
-  await fetch(`${process.env.NEXT_PUBLIC_VERCEL_PROTOCOL}://${process.env.NEXT_PUBLIC_VERCEL_URL}/api/story`, {
+  await fetch(`${process.env.NEXT_PUBLIC_URL}/api/story`, {
     method: "POST",
     body: JSON.stringify(cleanValues)
   })
@@ -14,7 +14,7 @@ export async function createStory(cleanValues) {
 export async function editStory(story, values) {
   await fetch(
     // eslint-disable-next-line max-len
-    `${process.env.NEXT_PUBLIC_VERCEL_PROTOCOL}://${process.env.NEXT_PUBLIC_VERCEL_URL}/api/story/${story.id}`, {
+    `${process.env.NEXT_PUBLIC_URL}/api/story/${story.id}`, {
     method: "PATCH",
     body: JSON.stringify(values)
   })
@@ -24,7 +24,7 @@ export async function editStory(story, values) {
 
 export async function deleteStory(id) {
   // eslint-disable-next-line max-len
-  await fetch(`${process.env.NEXT_PUBLIC_VERCEL_PROTOCOL}://${process.env.NEXT_PUBLIC_VERCEL_URL}/api/story/${id}`, {
+  await fetch(`${process.env.NEXT_PUBLIC_URL}/api/story/${id}`, {
     method: "DELETE"
   })
 

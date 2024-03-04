@@ -46,9 +46,6 @@ export default function Story({story}) {
           <p>
             Created at: {date}
           </p>
-          <p>
-            Comments:
-          </p>
         </div>
         {/* eslint-disable-next-line max-len */}
         <div className="w-full md:w-3/4 bg-slate-400 p-3 mt-2 lg:mt-0 rounded-md shadow-lg">

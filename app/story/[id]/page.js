@@ -5,7 +5,7 @@ export async function generateMetadata({params, searchParams}, parent) {
 
   const story = await fetch(
     // eslint-disable-next-line max-len
-    `${process.env.NEXT_PUBLIC_VERCEL_PROTOCOL}://${process.env.NEXT_PUBLIC_VERCEL_URL}/api/story/${id}`,
+    `${process.env.NEXT_PUBLIC_URL}/api/story/${id}`,
     {cache: "no-store"}
   ).then(res => res.json())
 
@@ -19,7 +19,7 @@ export default async function StoryPage({params}) {
 
   const story = await fetch(
     // eslint-disable-next-line max-len
-    `${process.env.NEXT_PUBLIC_VERCEL_PROTOCOL}://${process.env.NEXT_PUBLIC_VERCEL_URL}/api/story/${id}`,
+    `${process.env.NEXT_PUBLIC_URL}/api/story/${id}`,
     {cache: "no-store"}
   ).then(res => res.json())
 
