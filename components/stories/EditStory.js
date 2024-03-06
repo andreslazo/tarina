@@ -2,6 +2,7 @@
 import { useState } from "react"
 import Select from "react-select"
 import { useRouter } from "next/navigation"
+import CustomSelect from "@/components/shared/CustomSelect"
 import UploadFile from "@/components/stories/UploadFile"
 import { createStory, editStory } from "@/components/redirect"
 import { useAuthContext } from "@/components/context/AuthContext"
@@ -114,7 +115,7 @@ export default function EditStory({story}) {
             Labels:
           </p>
           <div className="py-1">
-            <Select
+            <CustomSelect
               isMulti
               name="labels"
               options={labels}
