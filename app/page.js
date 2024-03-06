@@ -2,9 +2,26 @@ import StoryList from "@/components/stories/StoryList"
 import { Title } from "@/components/shared/Title"
 
 export const metadata = {
-  title: "Tarina",
-  description: "Story analysis and prediction",
-  keywords: ["NextJS", "Analytics", "Prediction", "Tarina"]
+  title: "Tarina - Homepage",
+  // eslint-disable-next-line max-len
+  description: "The best place to read and share stories. Tarina is a platform for writers and readers to connect and share their stories.",
+  keywords: ["NextJS", "Analytics", "Prediction", "Tarina"],
+  default: "Tarina",
+  openGraph: {
+    title: "Tarina - Homepage",
+    description: "TThe best place to read and share stories",
+    url: "https://https://tarina.vercel.app/",
+    siteName: "Tarina",
+    images: [
+      {
+        url: "https://nextjs.org/tarina_logo.png", // Must be an absolute URL
+        width: 236,
+        height: 236,
+      }
+    ],
+    locale: "en_US",
+    type: "website",
+  },
 }
 
 export default async function Home() {
