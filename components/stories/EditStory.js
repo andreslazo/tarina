@@ -68,6 +68,7 @@ export default function EditStory({story}) {
     const cleanValues = cleanupValues(values)
 
     if (story) {
+      console.log("Editing story", story.id, cleanValues)
       editStory(story, cleanValues)
     } else {
       createStory(cleanValues)
