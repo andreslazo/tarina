@@ -1,7 +1,7 @@
 "use client"
 import Image from "next/image"
 
-export default function UploadFile({onChange, image}) {
+export default function UploadImage({onChange, image}) {
   return(
     <>
       <input type="file" accept="image/*" onChange={onChange} />

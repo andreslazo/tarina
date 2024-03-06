@@ -10,7 +10,7 @@ export async function generateMetadata({params, searchParams}, parent) {
   ).then(res => res.json())
 
   return {
-    title: `Story - ${story.title}`
+    title: `Story - ${story.title || "Not found"}`,
   }
 }
 
@@ -23,10 +23,8 @@ export default async function StoryPage({params}) {
     {cache: "no-store"}
   ).then(res => res.json())
 
-  if (story == undefined) {
-    return (
-      <div>Story no encontrado</div>
-    )
+  if (story.title == undefined) {
+    throw new Error("Story not found")
   }
 
   return (

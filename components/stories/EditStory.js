@@ -3,7 +3,7 @@ import { useState } from "react"
 import Select from "react-select"
 import { useRouter } from "next/navigation"
 import CustomSelect from "@/components/shared/CustomSelect"
-import UploadFile from "@/components/stories/UploadFile"
+import UploadImage from "@/components/stories/UploadImage"
 import { createStory, editStory } from "@/components/redirect"
 import { useAuthContext } from "@/components/context/AuthContext"
 import Button from "@/components/shared/Button"
@@ -38,15 +38,21 @@ export default function EditStory({story}) {
 
   const handleImageChange = (e) => {
     const file = e.target.files[0]
+    const maxSize = 5512000
+
     if (file) {
-      const reader = new FileReader()
-      reader.onloadend = () => {
-        setValues({
-          ...values,
-          image: reader.result
-        })
+      if (file.size > maxSize) {
+        alert("File is too large. Please select a file smaller than 512KB")
+      } else {
+        const reader = new FileReader()
+        reader.onloadend = () => {
+          setValues({
+            ...values,
+            image: reader.result
+          })
+        }
+        reader.readAsDataURL(file)
       }
-      reader.readAsDataURL(file)
     }
   }
 
@@ -109,7 +115,7 @@ export default function EditStory({story}) {
             Thumbnail (Optional):
           </div>
           <div className="py-2">
-            <UploadFile onChange={handleImageChange} image={values?.image} />
+            <UploadImage onChange={handleImageChange} image={values?.image} />
           </div>
           <p className="py-1">
             Labels:
