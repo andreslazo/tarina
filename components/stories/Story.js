@@ -1,4 +1,3 @@
-import Likes from "@/components/stories/Likes"
 import { Title } from "@/components/shared/Title"
 import NotFound from "@/app/not-found"
 import ReadingListButton from "@/components/stories/ReadingListButton"
@@ -26,7 +25,6 @@ export default function Story({story}) {
             Labels: {story.labels ? story.labels.join(", ") : "No labels"}
           </p>
 
-          <Likes story={story}/>
           <p>
             Views: {story.views || 0}
           </p>
