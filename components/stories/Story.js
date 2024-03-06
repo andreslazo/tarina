@@ -1,10 +1,10 @@
-import Image from "next/image"
 import Likes from "@/components/stories/Likes"
 import { Title } from "@/components/shared/Title"
 import NotFound from "@/app/not-found"
 import ReadingListButton from "@/components/stories/ReadingListButton"
 import EditStoryButton from "@/components/stories/EditStoryButton"
 import RemoveStoryButton from "@/components/stories/RemoveStoryButton"
+import StoryImage from "@/components/stories/StoryImage"
 
 export default function Story({story}) {
   let date = new Date(story.createdAt * 1000).toLocaleString()
@@ -19,16 +19,7 @@ export default function Story({story}) {
       <div className="p-4 flex flex-wrap">
         {/* eslint-disable-next-line max-len */}
         <div className="w-full md:w-1/4 bg-slate-500 p-3 rounded-md shadow-lg">
-          {story.thumbnail &&
-            <div className="relative h-100">
-                <Image
-                  src={story.thumbnail}
-                  alt="story-thumbnail"
-                  width={190}
-                  height={50}
-                />
-            </div>
-          }
+          <StoryImage story={story}/>
           <ReadingListButton story={story}/>
 
           <p>
