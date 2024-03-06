@@ -1,5 +1,6 @@
 import { useState, useEffect, useRef } from "react"
 import Link from "next/link"
+import LoginButton from "@/components/auth/LoginButton"
 
 export default function NavBarSubMenu({elements, divClassname = "", children}) {
   const [showSubMenu, setShowSubMenu] = useState(false)
@@ -51,6 +52,7 @@ export default function NavBarSubMenu({elements, divClassname = "", children}) {
               {link.name}
             </Link>
           ))}
+          <LoginButton />
         </div>
       )}
     </div>

@@ -25,11 +25,19 @@ export const AuthProvider = ({children}) => {
   const router = useRouter()
 
   const registerUser = async (values) => {
-    await createUserWithEmailAndPassword(auth, values.email, values.password)
+    try {
+      await createUserWithEmailAndPassword(auth, values.email, values.password)
+    } catch (error) {
+      alert("Failed to register, please check if your data is correct")
+    }
   }
 
   const loginUser = async (values) => {
-    await signInWithEmailAndPassword(auth, values.email, values.password)
+    try {
+      await signInWithEmailAndPassword(auth, values.email, values.password)
+    } catch (error) {
+      alert("Failed to login, please check if your data is correct")
+    }
   }
 
   const logout = async () => await signOut(auth)
