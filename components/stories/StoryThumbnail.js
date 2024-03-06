@@ -11,7 +11,7 @@ export default function StoryThumbnail({story}) {
           {story.title}
         </div>
         <div className="text-sm">
-          By: {story.userEmail}
+          By: {story.userEmail || "Unknown"}
         </div>
         <div className="text-sm">
           Likes: {story.likes || 0}

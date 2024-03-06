@@ -23,14 +23,15 @@ export default function Story({story}) {
           <ReadingListButton story={story}/>
 
           <p>
-            Labels: {story.labels && story.labels.join(", ")}
+            Labels: {story.labels ? story.labels.join(", ") : "No labels"}
           </p>
+
           <Likes story={story}/>
           <p>
             Views: {story.views || 0}
           </p>
           <p>
-            Written by: {story.userEmail}
+            Written by: {story.userEmail || "Unknown"}
           </p>
           <p>
             Last updated at: {date}
