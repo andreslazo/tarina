@@ -1,6 +1,6 @@
 import { useState, useEffect, useRef } from "react"
 import Link from "next/link"
-import LoginButton from "@/components/auth/LoginButton"
+import LoginLink from "@/components/auth/LoginLink"
 
 export default function NavBarSubMenu({elements, divClassname = "", children}) {
   const [showSubMenu, setShowSubMenu] = useState(false)
@@ -29,7 +29,7 @@ export default function NavBarSubMenu({elements, divClassname = "", children}) {
       <Link
         href="#"
         className={
-          "text-base text-slate-500 hover:text-slate-700 p-3 "
+          "text-base text-slate-200 hover:text-slate-700 p-3 "
           + (showSubMenu && "active")
         }
         onClick={toggleSubMenu}
@@ -52,7 +52,9 @@ export default function NavBarSubMenu({elements, divClassname = "", children}) {
               {link.name}
             </Link>
           ))}
-          <LoginButton />
+          <div className="block sm:block md:hidden lg:hidden xl:hidden">
+            <LoginLink />
+          </div>
         </div>
       )}
     </div>

@@ -43,25 +43,34 @@ export default function NavBar() {
             ) || (pathname === "/" && pathname === element.href)
 
             return (
-              <Link
-                key={element.name}
-                href={element.href}
-                // eslint-disable-next-line max-len
-                className={`${isActive && "text-slate-400 font-bold drop-shadow-xl"}
-                  text-base text-slate-500 hover:text-slate-700 p-3`}
-              >
-                {element.name}
-              </Link>
+              <li key={element.name}>
+                <Link
+                  key={element.name}
+                  href={element.href}
+                  // eslint-disable-next-line max-len
+                  className={`${isActive && "text-slate-100 font-bold drop-shadow-xl"}
+                    text-base text-slate-200 hover:text-slate-700 p-3`}
+                >
+                  {element.name}
+                </Link>
+              </li>
             )
           })
         }
 
-        <NavBarSubMenu elements={contactSubMenuElements}>
-          Contact
-        </NavBarSubMenu>
+        <li>
+          <NavBarSubMenu elements={contactSubMenuElements}>
+            Contact
+          </NavBarSubMenu>
+        </li>
 
-        <ReadingListWidget />
-        <LoginButton />
+        <li>
+          <ReadingListWidget />
+        </li>
+
+        <li>
+          <LoginButton />
+        </li>
       </ul>
 
       <NavBarSubMenu
