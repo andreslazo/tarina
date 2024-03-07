@@ -9,7 +9,7 @@ export const metadata = {
   default: "Tarina",
   openGraph: {
     title: "Tarina - Homepage",
-    description: "TThe best place to read and share stories",
+    description: "The best place to read and share stories",
     url: "https://tarina.vercel.app/",
     siteName: "Tarina",
     images: [

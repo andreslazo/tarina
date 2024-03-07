@@ -41,7 +41,7 @@ export default function EditStory({story}) {
 
   const handleImageChange = (e) => {
     const file = e.target.files[0]
-    const maxSize = 5512000
+    const maxSize = 512000
 
     if (file) {
       if (file.size > maxSize) {
