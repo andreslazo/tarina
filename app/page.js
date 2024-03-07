@@ -5,16 +5,16 @@ export const metadata = {
   title: "Tarina - Homepage",
   // eslint-disable-next-line max-len
   description: "The best place to read and share stories. Tarina is a platform for writers and readers to connect and share their stories.",
-  keywords: ["NextJS", "Analytics", "Prediction", "Tarina"],
+  keywords: ["NextJS", "Story", "Prediction", "Tarina"],
   default: "Tarina",
   openGraph: {
     title: "Tarina - Homepage",
     description: "TThe best place to read and share stories",
-    url: "https://https://tarina.vercel.app/",
+    url: "https://tarina.vercel.app/",
     siteName: "Tarina",
     images: [
       {
-        url: "https://nextjs.org/tarina_logo.png", // Must be an absolute URL
+        url: "https://tarina.vercel.app/tarina_logo.png",
         width: 236,
         height: 236,
       }
