@@ -6,7 +6,7 @@ import { Suspense } from "react"
 export default function StoryList({ stories }) {
   return (
     <>
-      <Suspense fallback={<FullScreenLoading />}>
+      <Suspense fallback={<FullScreenLoading>Loading...</FullScreenLoading>}>
         <div
           className="grid lg:grid-cols-3 md:grid-cols-2 grid-cols-1 gap-4 p-3 pb-16"
         >

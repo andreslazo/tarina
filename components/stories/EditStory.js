@@ -9,10 +9,13 @@ import { useAuthContext } from "@/components/context/AuthContext"
 import Button from "@/components/shared/Button"
 import TextArea from "@/components/shared/TextArea"
 import Input from "@/components/shared/Input"
+import FullScreenLoading from "@/components/shared/FullScreenLoading"
 import { labels } from "@/data/labels"
 
 export default function EditStory({story}) {
   const { user } = useAuthContext()
+  const [isLoading, setIsLoading] = useState(false)
+
   const [values, setValues] = useState({
     title: story?.title || "",
     content: story?.content || "",
@@ -72,18 +75,32 @@ export default function EditStory({story}) {
 
   const handleSubmit = async (e) => {
     e.preventDefault()
+    setIsLoading(true)
     const cleanValues = cleanupValues(values)
 
-    if (story) {
-      console.log("Editing story", story.id, cleanValues)
-      editStory(story, cleanValues)
-    } else {
-      createStory(cleanValues)
+    try {
+      if (story) {
+        await editStory(story, cleanValues)
+      } else {
+        await createStory(cleanValues)
+      }
+    } catch (error) {
+      console.error(error)
+    } finally {
+      setIsLoading(false)
     }
   }
 
   // eslint-disable-next-line max-len
   const selectedLabels = labels.filter(item => (values?.labels || []).includes(item.value))
+
+  if (isLoading) {
+    return (
+      <FullScreenLoading>
+        <p className="text-white">Saving...</p>
+      </FullScreenLoading>
+    )
+  }
 
   return (
     <form onSubmit={handleSubmit} className="pb-8">
@@ -137,7 +154,9 @@ export default function EditStory({story}) {
       </div>
 
       <div className="p-3 pb-5">
-        <Button type="submit">Save</Button>
+        <Button type="submit" disabled={isLoading}>
+          {isLoading ? "Saving..." : "Save"}
+        </Button>
       </div>
 
       {story && (
